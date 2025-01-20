@@ -2,6 +2,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "prepare": "tsx scripts/prepare.ts",
     "eslint": "eslint ."
   },
   "devDependencies": {
@@ -11,6 +12,7 @@
     "bumpp": "^9.10.1",
     "eslint": "^9.18.0",
     "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
     "vitest": "^3.0.2"
   }
 }
