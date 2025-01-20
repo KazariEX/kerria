@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "eslint": "eslint ."
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.14.0",
+    "@zinkawaii/eslint-config": "^0.1.9",
+    "bumpp": "^9.10.1",
+    "eslint": "^9.18.0",
+    "tsup": "^8.3.5",
+    "vitest": "^3.0.2"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "kerria",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.14.0",
+  "description": "",
+  "author": "KazariEX",
+  "license": "MIT",
+  "repository": "KazariEX/kerria",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node",
+    "dev": "tsup-node --watch",
+    "prepack": "pnpm run build",
+    "release": "bumpp --no-push -c \"release: v%s\"",
+    "test": "vitest"
+  }
+}
