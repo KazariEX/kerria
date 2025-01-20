@@ -5,7 +5,7 @@ import findCacheDir from "find-cache-dir";
 import fs from "fs-extra";
 import { join } from "pathe";
 import { glob } from "tinyglobby";
-import { isDev } from "../utils";
+import { capitalize, isDev } from "../utils";
 import type { LoadInfo } from "./useLoad";
 import type { SourceInfo } from "./useSource";
 
@@ -88,7 +88,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
                     return false;
                 }
                 outputLoads();
-                consola.success(`[${sign}] ${event} "${path}"`);
+                consola.success(`[${sign}] ${capitalize(event)} "${path}"`);
             });
         }
 

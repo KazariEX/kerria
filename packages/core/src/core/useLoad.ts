@@ -22,7 +22,7 @@ export function useLoad(name: string, options: UseLoadOptions) {
     const src = options.src ? resolve(options.src) : void 0;
     const out = resolve(options.out);
     const {
-        defaultValue,
+        defaultValue = {},
         onUpdate,
         beforeOutput
     } = options;
@@ -31,12 +31,12 @@ export function useLoad(name: string, options: UseLoadOptions) {
         name,
         src,
         out,
-        value: src ? fs.readJsonSync(src) : (defaultValue ?? {}),
+        value: src ? fs.readJsonSync(src) : defaultValue,
+        onUpdate,
         output() {
             const data = beforeOutput?.(info.value) ?? info.value;
-            fs.outputJsonSync(info.out, data);
-        },
-        onUpdate
+            fs.outputJsonSync(out, data);
+        }
     };
     ctx.loadInfos.push(info);
     onUpdate(info.value, void 0);
