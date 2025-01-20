@@ -27,5 +27,17 @@
     "prepack": "pnpm run build",
     "release": "bumpp --no-push -c \"release: v%s\"",
     "test": "vitest"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "consola": "^3.4.0",
+    "crypto-es": "^2.1.0",
+    "find-cache-dir": "^5.0.0",
+    "fs-extra": "^11.3.0",
+    "pathe": "^2.0.2",
+    "tinyglobby": "^0.2.10"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4"
   }
 }
