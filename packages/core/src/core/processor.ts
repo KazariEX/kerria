@@ -102,7 +102,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
             })
             .on("change", async () => {
                 const newVal = await fs.readJson(info.src!);
-                info.value = info.onUpdate(newVal, info.value);
+                info.value = info.onUpdate?.(newVal, info.value) ?? newVal;
                 info.output();
                 consola.success(`[${sign}] Change "${info.src}"`);
             });

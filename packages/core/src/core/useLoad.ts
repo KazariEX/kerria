@@ -12,7 +12,7 @@ export interface UseLoadOptions {
     src?: string;
     out: string;
     defaultValue?: unknown;
-    onUpdate: (newVal: any, oldVal: any) => any;
+    onUpdate?: (newVal: any, oldVal: any) => any;
     beforeOutput?: (val: any) => any;
 }
 
@@ -39,7 +39,7 @@ export function useLoad(name: string, options: UseLoadOptions) {
         }
     };
     ctx.loadInfos.push(info);
-    onUpdate(info.value, void 0);
+    onUpdate?.(info.value, void 0);
 
     return info;
 }
