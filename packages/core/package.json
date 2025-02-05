@@ -2,20 +2,16 @@
   "name": "kerria",
   "type": "module",
   "version": "0.1.0",
-  "packageManager": "pnpm@9.14.0",
+  "packageManager": "pnpm@10.2.0",
   "description": "",
   "author": "KazariEX",
   "license": "MIT",
   "repository": "KazariEX/kerria",
   "keywords": [],
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
+    ".": "./dist/index.js"
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
