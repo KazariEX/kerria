@@ -2,7 +2,6 @@
   "name": "kerria",
   "type": "module",
   "version": "0.2.0",
-  "packageManager": "pnpm@10.2.0",
   "description": "",
   "author": "KazariEX",
   "license": "MIT",
@@ -24,15 +23,15 @@
     "release": "bumpp --no-push -c \"release: v%s\""
   },
   "dependencies": {
-    "chokidar": "^4.0.3",
-    "consola": "^3.4.0",
-    "crypto-es": "^2.1.0",
-    "find-cache-dir": "^5.0.0",
-    "fs-extra": "^11.3.0",
-    "pathe": "^2.0.2",
-    "tinyglobby": "^0.2.10"
+    "chokidar": "catalog:",
+    "consola": "catalog:",
+    "crypto-es": "catalog:",
+    "find-cache-dir": "catalog:",
+    "fs-extra": "catalog:",
+    "pathe": "catalog:",
+    "tinyglobby": "catalog:"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4"
+    "@types/fs-extra": "catalog:"
   }
 }

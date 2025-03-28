@@ -1,18 +1,19 @@
 {
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@10.7.0",
   "scripts": {
     "prepare": "tsx scripts/prepare.ts",
     "eslint": "eslint ."
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.1.1",
-    "@types/node": "^22.13.1",
-    "@zinkawaii/eslint-config": "^0.1.10",
-    "bumpp": "^10.0.1",
-    "eslint": "^9.19.0",
-    "tsup": "^8.3.6",
-    "tsx": "^4.19.2",
-    "vitest": "^3.0.5"
+    "@antfu/eslint-config": "catalog:",
+    "@types/node": "catalog:",
+    "@zinkawaii/eslint-config": "catalog:",
+    "bumpp": "catalog:",
+    "eslint": "catalog:",
+    "tsup": "catalog:",
+    "tsx": "catalog:",
+    "vitest": "catalog:"
   }
 }
