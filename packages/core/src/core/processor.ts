@@ -172,7 +172,10 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
     }
 
     function outputLoads() {
-        fs.outputJsonSync(cachePath, caches);
+        // 在开发环境下写入缓存
+        if (isDev) {
+            fs.outputJsonSync(cachePath, caches);
+        }
 
         for (const info of ctx.loadInfos) {
             info.output();
