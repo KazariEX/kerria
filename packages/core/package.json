@@ -2,7 +2,7 @@
   "name": "kerria",
   "type": "module",
   "version": "0.2.0",
-  "description": "",
+  "description": "Composable source processor",
   "author": "KazariEX",
   "license": "MIT",
   "repository": "KazariEX/kerria",
