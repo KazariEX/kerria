@@ -10,10 +10,7 @@
     "@antfu/eslint-config": "catalog:",
     "@types/node": "catalog:",
     "@zinkawaii/eslint-config": "catalog:",
-    "bumpp": "catalog:",
     "eslint": "catalog:",
-    "tsup": "catalog:",
-    "tsx": "catalog:",
-    "vitest": "catalog:"
+    "tsx": "catalog:"
   }
 }

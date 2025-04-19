@@ -1,8 +1,7 @@
 packages:
   - packages/*
   - playground
-onlyBuiltDependencies:
-  - esbuild
+
 catalog:
   "@antfu/eslint-config": ^4.11.0
   "@types/fs-extra": ^11.0.4
@@ -18,6 +17,9 @@ catalog:
   gray-matter: ^4.0.3
   pathe: ^2.0.3
   tinyglobby: ^0.2.12
-  tsup: ^8.4.0
+  tsdown: ^0.8.1
   tsx: ^4.19.3
   vitest: ^3.0.9
+
+onlyBuiltDependencies:
+  - esbuild

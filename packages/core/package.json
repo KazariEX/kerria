@@ -17,8 +17,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node",
-    "dev": "tsup-node --watch",
+    "build": "tsdown",
+    "dev": "tsdown -w",
     "prepack": "pnpm run build",
     "release": "bumpp --no-push -c \"release: v%s\""
   },
@@ -32,6 +32,8 @@
     "tinyglobby": "catalog:"
   },
   "devDependencies": {
-    "@types/fs-extra": "catalog:"
+    "@types/fs-extra": "catalog:",
+    "bumpp": "catalog:",
+    "tsdown": "catalog:"
   }
 }
