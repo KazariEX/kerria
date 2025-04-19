@@ -6,6 +6,7 @@ catalog:
   "@types/fs-extra": ^11.0.4
   "@types/node": ^22.13.14
   "@zinkawaii/eslint-config": ^0.2.1
+  "@zinkawaii/tsconfig": ^0.0.1
   bumpp: ^10.1.0
   chokidar: ^4.0.3
   consola: ^3.4.2

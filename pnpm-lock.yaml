@@ -93,6 +93,9 @@ importers:
       '@zinkawaii/eslint-config':
         specifier: 'catalog:'
         version: 0.2.1
+      '@zinkawaii/tsconfig':
+        specifier: ^0.0.1
+        version: 0.0.1
       bumpp:
         specifier: 'catalog:'
         version: 10.1.0
@@ -1067,6 +1070,9 @@ packages:
 
   '@zinkawaii/eslint-config@0.2.1':
     resolution: {integrity: sha512-5MdQla0qLI8zojh5PqMDMsb3Ro6l3gXiOZSwyAHKOePb9e+kXtqWXFq0ySnRfM9eftpHuyHddiLxrCps5rfeUA==}
+
+  '@zinkawaii/tsconfig@0.0.1':
+    resolution: {integrity: sha512-uO40UtaaIMjc88J/NdKaF0O8mP3fm/jBhiCoMAHdCzSfincB4KJ5ddCf1yhzj8Inxl+MwjirXKAQ5e7QaLawGg==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -3311,6 +3317,8 @@ snapshots:
   '@vue/shared@3.5.13': {}
 
   '@zinkawaii/eslint-config@0.2.1': {}
+
+  '@zinkawaii/tsconfig@0.0.1': {}
 
   acorn-jsx@5.3.2(acorn@8.14.1):
     dependencies:
