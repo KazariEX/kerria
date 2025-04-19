@@ -1,5 +1,4 @@
 packages:
-  - packages/*
   - playground
 
 catalog:
@@ -19,7 +18,6 @@ catalog:
   tinyglobby: ^0.2.12
   tsdown: ^0.8.1
   tsx: ^4.19.3
-  vitest: ^3.0.9
 
 onlyBuiltDependencies:
   - esbuild

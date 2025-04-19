@@ -1,7 +1,13 @@
 {
   "type": "module",
   "private": true,
+  "scripts": {
+    "build": "tsx kerria.config.ts"
+  },
   "dependencies": {
     "gray-matter": "catalog:"
+  },
+  "devDependencies": {
+    "tsx": "catalog:"
   }
 }

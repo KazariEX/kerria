@@ -1,16 +1,45 @@
 {
+  "name": "kerria",
   "type": "module",
-  "private": true,
+  "version": "0.2.1",
   "packageManager": "pnpm@10.7.0",
+  "description": "Composable source processor",
+  "author": "KazariEX",
+  "license": "MIT",
+  "repository": "KazariEX/kerria",
+  "keywords": [],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "prepare": "tsx scripts/prepare.ts",
+    "build": "tsdown",
+    "dev": "tsdown -w",
+    "prepack": "pnpm run build",
+    "release": "bumpp --no-push -c \"release: v%s\"",
     "eslint": "eslint ."
+  },
+  "dependencies": {
+    "chokidar": "catalog:",
+    "consola": "catalog:",
+    "crypto-es": "catalog:",
+    "find-cache-dir": "catalog:",
+    "fs-extra": "catalog:",
+    "pathe": "catalog:",
+    "tinyglobby": "catalog:"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
+    "@types/fs-extra": "catalog:",
     "@types/node": "catalog:",
     "@zinkawaii/eslint-config": "catalog:",
+    "bumpp": "catalog:",
     "eslint": "catalog:",
-    "tsx": "catalog:"
+    "tsdown": "catalog:"
   }
 }

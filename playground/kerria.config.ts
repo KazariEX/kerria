@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import matter from "gray-matter";
-import { createProcessor, useLoad, useSource } from "../packages/core/src";
+import { createProcessor, useLoad, useSource } from "../src";
 
 const processor = createProcessor("Kerria", () => {
     const meta = useLoad("meta", {

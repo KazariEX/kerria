@@ -20,7 +20,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "packages/**/*.ts",
+    "src/**/*.ts",
     "playground/**/*.ts"
   ]
 }
