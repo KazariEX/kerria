@@ -28,7 +28,7 @@
     "chokidar": "catalog:",
     "consola": "catalog:",
     "crypto-es": "catalog:",
-    "find-cache-dir": "catalog:",
+    "find-cache-directory": "catalog:",
     "fs-extra": "catalog:",
     "pathe": "catalog:",
     "tinyglobby": "catalog:"

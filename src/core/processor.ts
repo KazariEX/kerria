@@ -1,7 +1,7 @@
 import chokidar from "chokidar";
 import consola from "consola";
 import CryptoES from "crypto-es";
-import findCacheDir from "find-cache-dir";
+import findCacheDirectory from "find-cache-directory";
 import fs from "fs-extra";
 import { join } from "pathe";
 import { glob } from "tinyglobby";
@@ -40,7 +40,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
         return a.kind - b.kind;
     });
 
-    const cacheDir = findCacheDir({ name: "kerria" });
+    const cacheDir = findCacheDirectory({ name: "kerria" });
     const cachePath = join(cacheDir!, `${sign}.json`);
     const caches: Record<string, Cache> = fs.existsSync(cachePath) && fs.readJsonSync(cachePath) || {};
 
