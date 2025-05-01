@@ -5,19 +5,22 @@ catalog:
   "@antfu/eslint-config": ^4.12.0
   "@types/fs-extra": ^11.0.4
   "@types/node": ^22.15.3
-  "@zinkawaii/eslint-config": ^0.2.3
-  "@zinkawaii/tsconfig": ^0.0.1
+  "@zinkawaii/eslint-config": ^0.3.0
+  "@zinkawaii/tsconfig": ^0.0.2
   bumpp: ^10.1.0
   chokidar: ^4.0.3
   consola: ^3.4.2
+  cross-env: ^7.0.3
   eslint: ^9.25.1
   find-cache-directory: ^6.0.0
   fs-extra: ^11.3.0
   gray-matter: ^4.0.3
   pathe: ^2.0.3
   tinyglobby: ^0.2.13
-  tsdown: ^0.10.0
-  tsx: ^4.19.3
+  tsdown: ^0.10.2
+  tsx: ^4.19.4
 
 onlyBuiltDependencies:
   - esbuild
+  - rolldown
+  - unrs-resolver

@@ -24,7 +24,7 @@ export function useLoad(name: string, options: UseLoadOptions) {
     const {
         defaultValue = {},
         onUpdate,
-        beforeOutput
+        beforeOutput,
     } = options;
 
     const info: LoadInfo = {
@@ -36,7 +36,7 @@ export function useLoad(name: string, options: UseLoadOptions) {
         output() {
             const data = beforeOutput?.(info.value) ?? info.value;
             fs.outputJsonSync(out, data);
-        }
+        },
     };
     ctx.loadInfos.push(info);
     onUpdate?.(info.value, void 0);

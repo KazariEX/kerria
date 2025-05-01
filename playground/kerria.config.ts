@@ -15,9 +15,9 @@ const processor = createProcessor("Kerria", () => {
                 .map(([, data]) => data);
             return {
                 ...val,
-                chapters
+                chapters,
             };
-        }
+        },
     });
 
     useSource(0, {
@@ -31,7 +31,7 @@ const processor = createProcessor("Kerria", () => {
 
             await info.output(path, content);
             return {
-                data
+                data,
             };
         },
         onCacheHit(cache) {
@@ -40,7 +40,7 @@ const processor = createProcessor("Kerria", () => {
 
             meta.value.chapters[title] = {
                 title,
-                ...data
+                ...data,
             };
         },
         unlink(cache) {
@@ -48,7 +48,7 @@ const processor = createProcessor("Kerria", () => {
             const { title } = data;
 
             delete meta.value.chapters[title];
-        }
+        },
     });
 });
 

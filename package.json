@@ -2,7 +2,7 @@
   "name": "kerria",
   "type": "module",
   "version": "0.2.2",
-  "packageManager": "pnpm@10.7.0",
+  "packageManager": "pnpm@10.10.0",
   "description": "Composable source processor",
   "author": "KazariEX",
   "license": "MIT",
@@ -21,8 +21,7 @@
     "build": "tsdown",
     "dev": "tsdown -w",
     "prepack": "pnpm run build",
-    "release": "bumpp --no-push -c \"release: v%s\"",
-    "eslint": "eslint ."
+    "release": "bumpp --no-push -c \"release: v%s\""
   },
   "dependencies": {
     "chokidar": "catalog:",

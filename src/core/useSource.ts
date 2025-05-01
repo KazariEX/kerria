@@ -47,7 +47,7 @@ export function useSource<C extends object>(kind: number, options: UseSourceOpti
         async output(path, data) {
             const outPath = path.replace(base, dist!).replace(info.ext, ".json");
             await fs.outputJson(outPath, data);
-        }
+        },
     };
     ctx.sourceInfos.push(info);
 

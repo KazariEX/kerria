@@ -29,7 +29,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
     const ctx: ProcessorContext = {
         sign,
         loadInfos: [],
-        sourceInfos: []
+        sourceInfos: [],
     };
 
     currentContext = ctx;
@@ -48,7 +48,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
         for (const info of ctx.sourceInfos) {
             const paths = await glob(info.patterns, {
                 deep: info.deep ? Infinity : 2,
-                absolute: true
+                absolute: true,
             });
 
             await Promise.all(
@@ -56,7 +56,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
                     .map((path) => path.replaceAll("\\", "/"))
                     .filter(info.filter)
                     .sort((a, b) => a.localeCompare(b))
-                    .map((path) => parse(path, info))
+                    .map((path) => parse(path, info)),
             );
         }
         outputLoads();
@@ -67,7 +67,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
         for (const info of ctx.sourceInfos) {
             chokidar.watch(info.folders, {
                 depth: info.deep ? Infinity : 0,
-                ignoreInitial: true
+                ignoreInitial: true,
             })
             .on("all", async (event: string, filename: string) => {
                 const path = filename.replaceAll("\\", "/");
@@ -98,7 +98,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
             }
 
             chokidar.watch(info.src, {
-                ignoreInitial: true
+                ignoreInitial: true,
             })
             .on("change", async () => {
                 const newVal = await fs.readJson(info.src!);
@@ -130,7 +130,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
         if (data !== null) {
             cache = {
                 ...cache,
-                ...data ?? {}
+                ...data ?? {},
             };
             // 执行一次命中缓存的逻辑
             info.onCacheHit?.(cache);
@@ -188,6 +188,6 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
 
     return {
         build,
-        watch
+        watch,
     };
 }
