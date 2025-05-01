@@ -1,6 +1,6 @@
+import { createHash } from "node:crypto";
 import chokidar from "chokidar";
 import consola from "consola";
-import CryptoES from "crypto-es";
 import findCacheDirectory from "find-cache-directory";
 import fs from "fs-extra";
 import { join } from "pathe";
@@ -111,7 +111,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
 
     async function parse(path: string, info: SourceInfo) {
         const stats = await fs.stat(path);
-        const hash = CryptoES.MD5(stats.size.toString()).toString();
+        const hash = createHash("md5").update(stats.size.toString()).digest("hex");
 
         let cache = caches[path];
 

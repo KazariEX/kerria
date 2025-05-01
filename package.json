@@ -27,7 +27,6 @@
   "dependencies": {
     "chokidar": "catalog:",
     "consola": "catalog:",
-    "crypto-es": "catalog:",
     "find-cache-directory": "catalog:",
     "fs-extra": "catalog:",
     "pathe": "catalog:",

@@ -10,7 +10,6 @@ catalog:
   bumpp: ^10.1.0
   chokidar: ^4.0.3
   consola: ^3.4.2
-  crypto-es: ^2.1.0
   eslint: ^9.25.1
   find-cache-directory: ^6.0.0
   fs-extra: ^11.3.0
