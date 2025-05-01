@@ -111,7 +111,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
 
     async function parse(path: string, info: SourceInfo) {
         const stats = await fs.stat(path);
-        const hash = createHash("md5").update(stats.size.toString()).digest("hex");
+        const hash = createHash("md5").update(stats.mtimeMs.toString()).digest("hex");
 
         let cache = caches[path];
 
