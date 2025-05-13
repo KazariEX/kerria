@@ -1,5 +1,5 @@
-import fs from "fs-extra";
 import { resolve } from "pathe";
+import { writeJson } from "../utils";
 import { useCurrentContext } from "./processor";
 import type { MaybePromise } from "../types";
 
@@ -46,7 +46,7 @@ export function useSource<C extends object>(kind: number, options: UseSourceOpti
         },
         async output(path, data) {
             const outPath = path.replace(base, dist!).replace(info.ext, ".json");
-            await fs.outputJson(outPath, data);
+            await writeJson(outPath, data);
         },
     };
     ctx.sourceInfos.push(info);

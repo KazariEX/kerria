@@ -27,13 +27,11 @@
     "chokidar": "catalog:",
     "consola": "catalog:",
     "find-cache-directory": "catalog:",
-    "fs-extra": "catalog:",
     "pathe": "catalog:",
     "tinyglobby": "catalog:"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
-    "@types/fs-extra": "catalog:",
     "@types/node": "catalog:",
     "@zinkawaii/eslint-config": "catalog:",
     "@zinkawaii/tsconfig": "catalog:",

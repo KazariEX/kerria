@@ -1,5 +1,5 @@
-import fs from "fs-extra";
 import { resolve } from "pathe";
+import { readJsonSync, writeJsonSync } from "../utils";
 import { useCurrentContext } from "./processor";
 
 export interface LoadInfo extends Omit<UseLoadOptions, "defaultValue" | "beforeOutput"> {
@@ -31,11 +31,11 @@ export function useLoad(name: string, options: UseLoadOptions) {
         name,
         src,
         out,
-        value: src ? fs.readJsonSync(src) : defaultValue,
+        value: src ? readJsonSync(src) : defaultValue,
         onUpdate,
         output() {
             const data = beforeOutput?.(info.value) ?? info.value;
-            fs.outputJsonSync(out, data);
+            writeJsonSync(out, data);
         },
     };
     ctx.loadInfos.push(info);

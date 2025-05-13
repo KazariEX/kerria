@@ -1,11 +1,12 @@
 import { createHash } from "node:crypto";
+import { existsSync, rmdirSync } from "node:fs";
+import { stat } from "node:fs/promises";
 import chokidar from "chokidar";
 import consola from "consola";
 import findCacheDirectory from "find-cache-directory";
-import fs from "fs-extra";
 import { join } from "pathe";
 import { glob } from "tinyglobby";
-import { capitalize, isDev } from "../utils";
+import { capitalize, isDev, readJson, readJsonSync, writeJsonSync } from "../utils";
 import type { LoadInfo } from "./useLoad";
 import type { SourceInfo } from "./useSource";
 
@@ -42,7 +43,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
 
     const cacheDir = findCacheDirectory({ name: "kerria" });
     const cachePath = join(cacheDir!, `${sign}.json`);
-    const caches: Record<string, Cache> = fs.existsSync(cachePath) && fs.readJsonSync(cachePath) || {};
+    const caches: Record<string, Cache> = existsSync(cachePath) && readJsonSync(cachePath) || {};
 
     async function build() {
         for (const info of ctx.sourceInfos) {
@@ -101,7 +102,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
                 ignoreInitial: true,
             })
             .on("change", async () => {
-                const newVal = await fs.readJson(info.src!);
+                const newVal = await readJson(info.src!);
                 info.value = info.onUpdate?.(newVal, info.value) ?? newVal;
                 info.output();
                 consola.success(`[${sign}] Change "${info.src}"`);
@@ -110,7 +111,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
     }
 
     async function parse(path: string, info: SourceInfo) {
-        const stats = await fs.stat(path);
+        const stats = await stat(path);
         const hash = createHash("md5").update(stats.mtimeMs.toString()).digest("hex");
 
         let cache = caches[path];
@@ -174,11 +175,11 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
     function outputLoads() {
         if (isDev) {
             // 在开发环境下写入缓存
-            fs.outputJsonSync(cachePath, caches);
+            writeJsonSync(cachePath, caches);
         }
         else {
             // 在生产环境下删除缓存
-            fs.removeSync(cachePath);
+            rmdirSync(cachePath);
         }
 
         for (const info of ctx.loadInfos) {
