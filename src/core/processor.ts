@@ -3,7 +3,7 @@ import { existsSync, rmdirSync } from "node:fs";
 import { stat } from "node:fs/promises";
 import chokidar from "chokidar";
 import consola from "consola";
-import findCacheDirectory from "find-cache-directory";
+import * as pkg from "empathic/package";
 import { join } from "pathe";
 import { glob } from "tinyglobby";
 import { capitalize, isDev, readJson, readJsonSync, writeJsonSync } from "../utils";
@@ -41,7 +41,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
         return a.kind - b.kind;
     });
 
-    const cacheDir = findCacheDirectory({ name: "kerria" });
+    const cacheDir = pkg.cache("kerria", { create: true });
     const cachePath = join(cacheDir!, `${sign}.json`);
     const caches: Record<string, Cache> = existsSync(cachePath) && readJsonSync(cachePath) || {};
 
