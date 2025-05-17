@@ -1,8 +1,8 @@
 import { readFile } from "node:fs/promises";
 import matter from "gray-matter";
-import { createProcessor, useLoad, useSource } from "../src";
+import { createKerria, useLoad, useSource } from "../src";
 
-const processor = createProcessor("Kerria", () => {
+const processor = createKerria("Kerria", () => {
     const meta = useLoad("meta", {
         out: "./dist/meta.json",
         onUpdate(newVal, oldVal) {

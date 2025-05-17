@@ -14,20 +14,20 @@ interface Cache {
     hash: string;
 }
 
-interface ProcessorContext {
+interface KerriaContext {
     sign: string;
     loadInfos: LoadInfo[];
     sourceInfos: SourceInfo[];
 }
 
-let currentContext: ProcessorContext | null = null;
+let currentContext: KerriaContext | null = null;
 
 export function useCurrentContext() {
     return currentContext!;
 }
 
-export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => void) {
-    const ctx: ProcessorContext = {
+export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) {
+    const ctx: KerriaContext = {
         sign,
         loadInfos: [],
         sourceInfos: [],
