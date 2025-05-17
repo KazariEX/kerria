@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { existsSync, rmdirSync } from "node:fs";
+import { existsSync, rmSync } from "node:fs";
 import { stat } from "node:fs/promises";
 import chokidar from "chokidar";
 import consola from "consola";
@@ -179,7 +179,7 @@ export function createProcessor(sign: string, setup: (ctx: ProcessorContext) => 
         }
         else {
             // 在生产环境下删除缓存
-            rmdirSync(cachePath);
+            rmSync(cachePath);
         }
 
         for (const info of ctx.loadInfos) {
