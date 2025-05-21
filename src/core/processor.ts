@@ -179,7 +179,7 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
         }
         else {
             // 在生产环境下删除缓存
-            rmSync(cachePath);
+            rmSync(cachePath, { force: true });
         }
 
         for (const info of ctx.loadInfos) {
