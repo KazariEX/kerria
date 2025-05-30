@@ -48,7 +48,6 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
     async function build() {
         for (const info of ctx.sourceInfos) {
             const paths = await glob(info.patterns, {
-                deep: info.deep ? Infinity : 2,
                 absolute: true,
             });
 

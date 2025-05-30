@@ -29,7 +29,7 @@ export function useSource<C extends object>(kind: number, options: UseSourceOpti
     const base = resolve(options.base);
     const dist = options.dist ? resolve(options.dist) : void 0;
     const folders = options.folders?.map((folder) => resolve(base, folder)) ?? [base];
-    const patterns = folders.map((path) => resolve(path, `**/*${options.ext}`));
+    const patterns = folders.map((path) => resolve(path, (options.deep ? "**/*" : "*") + options.ext));
 
     const info: SourceInfo = {
         ...options,
