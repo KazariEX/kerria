@@ -25,11 +25,15 @@ interface UseSourceOptions<T = any> {
 
 export function useSource<C extends object>(kind: number, options: UseSourceOptions<C>) {
     const ctx = useCurrentContext();
+    const {
+        deep = true,
+        skip = 0,
+    } = options;
 
     const base = resolve(options.base);
     const dist = options.dist ? resolve(options.dist) : void 0;
     const folders = options.folders?.map((folder) => resolve(base, folder)) ?? [base];
-    const patterns = folders.map((path) => resolve(path, (options.deep ? "**/*" : "*") + options.ext));
+    const patterns = folders.map((path) => resolve(path, (deep ? "**/*" : "*") + options.ext));
 
     const info: SourceInfo = {
         ...options,
@@ -38,11 +42,11 @@ export function useSource<C extends object>(kind: number, options: UseSourceOpti
         dist,
         folders,
         patterns,
-        deep: options.deep ?? true,
-        skip: options.skip ?? 0,
+        deep,
+        skip,
         filter(path) {
             const depth = path.split("/").length - folders[0].split("/").length;
-            return info.skip! < depth;
+            return skip < depth;
         },
         async output(path, data) {
             const outPath = path.replace(base, dist!).replace(info.ext, ".json");

@@ -18,14 +18,14 @@ export interface UseLoadOptions {
 
 export function useLoad(name: string, options: UseLoadOptions) {
     const ctx = useCurrentContext();
-
-    const src = options.src ? resolve(options.src) : void 0;
-    const out = resolve(options.out);
     const {
         defaultValue = {},
         onUpdate,
         beforeOutput,
     } = options;
+
+    const src = options.src ? resolve(options.src) : void 0;
+    const out = resolve(options.out);
 
     const info: LoadInfo = {
         name,
