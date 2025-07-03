@@ -121,16 +121,14 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
             return false;
         }
 
-        // 重置缓存
-        cache = { hash };
-
         // 开始解析
         const data = await info.parse(path, info);
 
         if (data !== null) {
+            // 重置缓存
             cache = {
-                ...cache,
-                ...data ?? {},
+                hash,
+                ...data,
             };
             // 执行一次命中缓存的逻辑
             info.onCacheHit?.(cache);
