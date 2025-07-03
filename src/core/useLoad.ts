@@ -1,6 +1,6 @@
 import { resolve } from "pathe";
 import { readJsonSync, writeJsonSync } from "../utils";
-import { useCurrentContext } from "./processor";
+import { useCurrentContext } from "./kerria";
 
 export interface LoadInfo extends Omit<UseLoadOptions, "defaultValue" | "beforeOutput"> {
     name: string;

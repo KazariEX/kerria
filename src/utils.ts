@@ -1,6 +1,6 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import { dirname } from "pathe";
 
 export const isDev = process.env.NODE_ENV === "development";
 

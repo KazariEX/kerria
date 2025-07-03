@@ -1,6 +1,6 @@
 import { resolve } from "pathe";
 import { writeJson } from "../utils";
-import { useCurrentContext } from "./processor";
+import { useCurrentContext } from "./kerria";
 import type { MaybePromise } from "../types";
 
 export interface SourceInfo extends Omit<UseSourceOptions, "folders"> {
@@ -11,7 +11,7 @@ export interface SourceInfo extends Omit<UseSourceOptions, "folders"> {
     output: (path: string, data: any) => Promise<void>;
 }
 
-interface UseSourceOptions<T = any> {
+export interface UseSourceOptions<T = any> {
     base: string;
     dist?: string;
     folders?: string[];

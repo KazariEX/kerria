@@ -14,7 +14,7 @@ interface Cache {
     hash: string;
 }
 
-interface KerriaContext {
+export interface KerriaContext {
     sign: string;
     loadInfos: LoadInfo[];
     sourceInfos: SourceInfo[];

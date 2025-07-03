@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import matter from "gray-matter";
 import { createKerria, useLoad, useSource } from "../src";
 
-const processor = createKerria("Kerria", () => {
+const kerria = createKerria("Kerria", () => {
     const meta = useLoad("meta", {
         out: "./dist/meta.json",
         onUpdate(newVal, oldVal) {
@@ -52,5 +52,5 @@ const processor = createKerria("Kerria", () => {
     });
 });
 
-processor.build();
-processor.watch();
+kerria.build();
+kerria.watch();
