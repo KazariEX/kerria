@@ -2,7 +2,7 @@
   "name": "kerria",
   "type": "module",
   "version": "0.3.4",
-  "packageManager": "pnpm@10.12.4",
+  "packageManager": "pnpm@10.14.0",
   "description": "Composable source processor",
   "author": "KazariEX",
   "license": "MIT",
@@ -31,7 +31,6 @@
     "tinyglobby": "catalog:"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:",
     "@types/node": "catalog:",
     "@zinkawaii/eslint-config": "catalog:",
     "@zinkawaii/tsconfig": "catalog:",

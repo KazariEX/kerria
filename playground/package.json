@@ -2,13 +2,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsx kerria.config.ts"
+    "dev": "cross-env NODE_ENV=development jiti kerria.config.ts"
   },
   "dependencies": {
     "gray-matter": "catalog:"
   },
   "devDependencies": {
-    "cross-env": "catalog:",
-    "tsx": "catalog:"
+    "cross-env": "catalog:"
   }
 }
