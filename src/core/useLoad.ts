@@ -2,7 +2,7 @@ import { resolve } from "pathe";
 import { readJsonSync, writeJsonSync } from "../utils";
 import { useCurrentContext } from "./kerria";
 
-export interface LoadInfo extends Omit<UseLoadOptions, "defaultValue" | "beforeOutput"> {
+export interface LoadInfo extends Omit<UseLoadOptions, "defaultValue" | "output"> {
     name: string;
     value: any;
     output: () => void;
@@ -12,16 +12,16 @@ export interface UseLoadOptions {
     src?: string;
     out: string;
     defaultValue?: unknown;
-    onUpdate?: (newVal: any, oldVal: any) => any;
-    beforeOutput?: (val: any) => any;
+    update?: (newVal: any, oldVal: any) => any;
+    output?: (val: any) => any;
 }
 
 export function useLoad(name: string, options: UseLoadOptions) {
     const ctx = useCurrentContext();
     const {
         defaultValue = {},
-        onUpdate,
-        beforeOutput,
+        update,
+        output,
     } = options;
 
     const src = options.src ? resolve(options.src) : void 0;
@@ -32,14 +32,14 @@ export function useLoad(name: string, options: UseLoadOptions) {
         src,
         out,
         value: src ? readJsonSync(src) : defaultValue,
-        onUpdate,
+        update,
         output() {
-            const data = beforeOutput?.(info.value) ?? info.value;
+            const data = output?.(info.value) ?? info.value;
             writeJsonSync(out, data);
         },
     };
     ctx.loadInfos.push(info);
-    onUpdate?.(info.value, void 0);
+    update?.(info.value, void 0);
 
     return info;
 }

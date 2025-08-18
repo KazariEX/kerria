@@ -102,7 +102,7 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
             })
             .on("change", async () => {
                 const newVal = await readJson(info.src!);
-                info.value = info.onUpdate?.(newVal, info.value) ?? newVal;
+                info.value = info.update?.(newVal, info.value) ?? newVal;
                 info.output();
                 consola.success(`[${sign}] Change "${info.src}"`);
             });
@@ -117,7 +117,7 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
 
         // 当在开发环境下命中缓存时
         if (isDev && cache?.hash === hash) {
-            info.onCacheHit?.(cache);
+            info.cache?.(cache);
             return false;
         }
 
@@ -131,7 +131,7 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
                 ...data,
             };
             // 执行一次命中缓存的逻辑
-            info.onCacheHit?.(cache);
+            info.cache?.(cache);
             caches[path] = cache;
         }
         else {

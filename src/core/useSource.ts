@@ -19,11 +19,11 @@ export interface UseSourceOptions<T = any> {
     deep?: boolean;
     skip?: number;
     parse: (path: string, info: SourceInfo) => MaybePromise<T | null | void>;
+    cache?: (cache: T) => void;
     unlink?: (cache: T) => void;
-    onCacheHit?: (cache: T) => void;
 }
 
-export function useSource<C extends object>(kind: number, options: UseSourceOptions<C>) {
+export function useSource<T extends object>(kind: number, options: UseSourceOptions<T>) {
     const ctx = useCurrentContext();
     const {
         deep = true,

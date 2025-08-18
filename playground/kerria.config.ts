@@ -5,11 +5,11 @@ import { createKerria, useLoad, useSource } from "../src";
 const kerria = createKerria("Kerria", () => {
     const meta = useLoad("meta", {
         out: "./dist/meta.json",
-        onUpdate(newVal, oldVal) {
+        update(newVal, oldVal) {
             newVal.chapters = oldVal?.chapters ?? {};
             return newVal;
         },
-        beforeOutput(val) {
+        output(val) {
             const chapters = Object.entries(val.chapters)
                 .sort(([a], [b]) => a.localeCompare(b))
                 .map(([, data]) => data);
@@ -34,7 +34,7 @@ const kerria = createKerria("Kerria", () => {
                 data,
             };
         },
-        onCacheHit(cache) {
+        cache(cache) {
             const { data } = cache;
             const { title } = data;
 
