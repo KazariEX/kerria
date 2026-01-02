@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, rmSync } from "node:fs";
 import { stat } from "node:fs/promises";
-import chokidar from "chokidar";
+import chokidar, { type FSWatcher } from "chokidar";
 import consola from "consola";
 import * as pkg from "empathic/package";
 import { join } from "pathe";
@@ -37,9 +37,7 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
     setup(ctx);
     currentContext = null;
 
-    ctx.sourceInfos.sort((a, b) => {
-        return a.kind - b.kind;
-    });
+    ctx.sourceInfos.sort((a, b) => a.kind - b.kind);
 
     const cacheDir = pkg.cache("kerria", { create: true });
     const cachePath = join(cacheDir!, `${sign}.json`);
@@ -63,13 +61,17 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
         consola.success(`[${sign}] Build`);
     }
 
-    async function watch() {
+    function watch() {
+        const watchers: FSWatcher[] = [];
+
         for (const info of ctx.sourceInfos) {
-            chokidar.watch(info.folders, {
+            const watcher = chokidar.watch(info.folders, {
                 depth: info.deep ? Infinity : 0,
                 ignoreInitial: true,
-            })
-            .on("all", async (event: string, filename: string) => {
+            });
+            watchers.push(watcher);
+
+            watcher.on("all", async (event: string, filename: string) => {
                 const path = filename.replaceAll("\\", "/");
 
                 if (!path.endsWith(info.ext)) {
@@ -97,16 +99,24 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
                 continue;
             }
 
-            chokidar.watch(info.src, {
+            const watcher = chokidar.watch(info.src, {
                 ignoreInitial: true,
-            })
-            .on("change", async () => {
+            });
+            watchers.push(watcher);
+
+            watcher.on("change", async () => {
                 const newVal = await readJson(info.src!);
                 info.value = info.update?.(newVal, info.value) ?? newVal;
                 info.output();
                 consola.success(`[${sign}] Change "${info.src}"`);
             });
         }
+
+        return () => {
+            for (const watcher of watchers) {
+                watcher.close();
+            }
+        };
     }
 
     async function parse(path: string, info: SourceInfo) {
