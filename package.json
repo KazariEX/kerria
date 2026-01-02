@@ -2,18 +2,19 @@
   "name": "kerria",
   "type": "module",
   "version": "0.4.0",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.27.0",
   "description": "Composable source processor",
   "author": "KazariEX",
   "license": "MIT",
   "repository": "KazariEX/kerria",
   "keywords": [],
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist"
   ],
