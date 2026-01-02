@@ -48,9 +48,9 @@ export function useSource<T extends object>(kind: number, options: UseSourceOpti
             const depth = path.split("/").length - folders[0].split("/").length;
             return skip < depth;
         },
-        async output(path, data) {
+        output(path, data) {
             const outPath = path.replace(base, dist!).replace(info.ext, ".json");
-            await writeJson(outPath, data);
+            return writeJson(outPath, data);
         },
     };
     ctx.sourceInfos.push(info);

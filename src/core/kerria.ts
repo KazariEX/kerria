@@ -41,7 +41,7 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
 
     const cacheDir = pkg.cache("kerria", { create: true });
     const cachePath = join(cacheDir!, `${sign}.json`);
-    const caches: Record<string, Cache> = existsSync(cachePath) && readJsonSync(cachePath) || {};
+    const caches: Record<string, Cache> = existsSync(cachePath) ? readJsonSync(cachePath) : {};
 
     async function build() {
         for (const info of ctx.sourceInfos) {
@@ -71,7 +71,7 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
             });
             watchers.push(watcher);
 
-            watcher.on("all", async (event: string, filename: string) => {
+            watcher.on("all", async (event, filename) => {
                 const path = filename.replaceAll("\\", "/");
 
                 if (!path.endsWith(info.ext)) {
@@ -112,11 +112,9 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
             });
         }
 
-        return () => {
-            for (const watcher of watchers) {
-                watcher.close();
-            }
-        };
+        return () => Promise.all(
+            watchers.map((watcher) => watcher.close()),
+        );
     }
 
     async function parse(path: string, info: SourceInfo) {
@@ -151,16 +149,14 @@ export function createKerria(sign: string, setup: (ctx: KerriaContext) => void) 
         return true;
     }
 
-    async function add(path: string, info: SourceInfo) {
-        const cache = caches[path];
-
+    function add(path: string, info: SourceInfo) {
         // 缓存存在时无需更新
-        if (cache) {
+        if (path in caches) {
             return false;
         }
 
         // 开始解析
-        return await parse(path, info);
+        return parse(path, info);
     }
 
     function unlink(path: string, info: SourceInfo) {
